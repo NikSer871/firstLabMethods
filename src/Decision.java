@@ -3,7 +3,7 @@ import java.util.function.Function;
 public class Decision {
     public static double findRoot(Function<Double, Double> equation, double a, double b, double epsilon) {
         if (equation.apply(a) * equation.apply(b) > 0) {
-            System.out.println("Значения функции в точках а и б имеют одинаковые знаки!!!");
+            System.out.println("Wrong numbers!!!");
             System.exit(-1);
         }
         double fixedNumber = a;

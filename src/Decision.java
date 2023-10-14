@@ -6,6 +6,7 @@ public class Decision {
             System.out.println("Значения функции в точках а и б имеют одинаковые знаки!!!");
             System.exit(-1);
         }
+        int iterator = 1;
         double fixedNumber = a;
         double valuesA;
         double valuesB;
@@ -15,6 +16,9 @@ public class Decision {
             valuesA = equation.apply(a);
             valuesB = equation.apply(b);
             newValue = a - (valuesA * (a - b)) / (valuesA - valuesB);
+            System.out.printf("%s : x = %.4f", iterator, newValue);
+            System.out.println();
+            iterator++;
             valueOfFunction = equation.apply(newValue);
             if (Math.abs(fixedNumber - newValue) < epsilon) {
                 return newValue;
@@ -31,12 +35,12 @@ public class Decision {
     public static void main(String[] args) {
 
         Function<Double, Double> equation = (x) -> 21 * Math.pow(x, 5) - (43.3 * Math.pow(x, 4)) + (10.2 * Math.pow(x, 2)) - (51 * x) - 9.7;
-        double a = -5;
-        double b = 5;
-        double err = 0.001;
+        double a = -3;
+        double b = 4;
+        double err = 0.00000001;
         double root = findRoot(equation, a, b, err);
-        System.out.println("x = " + root);
-        System.out.println("F(x) = " + equation.apply(root));
+        System.out.printf("x = %.4f \n", root);
+        System.out.printf("F(x) = %.4f", equation.apply(root));
 
     }
 }
